@@ -1,4 +1,5 @@
-// CODIGO ABIERTO BY YUNG SAMY - DISCORD: likeadversario
+// CODIGO ABIERTO BY YUNG SAMY - ADAPTADO AL USMS PARA MYSTICOS RP
+// DISCORD: likeadversario
 // GITHUB: https://github.com/yungsamy4p/fdn-portal
 // INSTAGRAM: https://www.instagram.com/yungsamy4p
 
@@ -16,28 +17,29 @@ document.getElementById('enlistForm').addEventListener('submit', async function 
   const motivation = document.getElementById('motivation').value;
 
   submitBtn.disabled = true;
-  submitBtn.innerText = "ENVIANDO REPORTE CIFRADO...";
+  submitBtn.innerText = "TRANSMITIENDO EXPEDIENTE FEDERAL...";
   statusMsg.innerText = "";
 
-    const ROL_ESTADO_MAYOR_ID = "1543494798986575953"; // Pega aquí el ID numérico de Discord
+  // ID ti Rol ti Superbision / Direksion ti Distrito ti USMS
+  const ROL_SUPERVISION_USMS_ID = "1543494798986575953";
 
   const payload = {
-    username: "CENTRAL DE COMANDO FDN",
-    avatar_url: "https://cdn.discordapp.com/attachments/1543495355318927392/1545704842108866630/logofdnnewgen2.png",
-    // Esta línea dispara el ping sonoro y la alerta a los miembros del rol:
-    content: `**ALERTA DE RECLUTAMIENTO** <@&${ROL_ESTADO_MAYOR_ID}>`,
+    username: "DESPACHO CENTRAL // U.S. MARSHALS SERVICE",
+    avatar_url: "https://cdn.discordapp.com/attachments/1543495355318927392/1545704842108866630/logofdnnewgen2.png", // Masukatan iti logo ti USMS
+    content: `⚖️ **NOTIFICACIÓN DE POSTULACIÓN / LEGAJO DE SERVICIO** <@&${ROL_SUPERVISION_USMS_ID}>`,
     embeds: [
       {
-        title: "<:flagofusaincircleshapeamericanro:1543495568268071023> NUEVA SOLICITUD DE ENLISTAMIENTO RECIBIDA",
-        color: 0x4b5320, 
+        title: "⭐ NUEVA SOLICITUD DE ADHESIÓN AL USMS RECIBIDA",
+        description: "Se ha radicado un nuevo expediente de postulación para incorporarse al **United States Marshals Service** en el Distrito Judicial de Mysticos RP.",
+        color: 0x1a2b4c, // Maris asul a pederal ti USMS (#1a2b4c)
         fields: [
-          { name: "<:profile:1543495540304519188> Identificador / Nombre", value: `\`${callsign}\``, inline: true },
-          { name: "<:checklist:1543495552702877767> Contacto Discord", value: `\`${discord}\``, inline: true },
-          { name: "<:divfdn:1543495592188190740> División Solicitada", value: division, inline: false },
-          { name: "<:pencilfdn:1543495561989197914> Declaración / Experiencia", value: motivation, inline: false }
+          { name: "👤 Identificador / Nombre IC", value: `\`${callsign}\``, inline: true },
+          { name: "📋 Contacto de Discord", value: `\`${discord}\``, inline: true },
+          { name: "🛡️ División Solicitada", value: `\`${division}\``, inline: false },
+          { name: "📜 Declaración de Intenciones / Antecedentes", value: motivation, inline: false }
         ],
         footer: {
-          text: "FDN Tactical Systems // Registro Automático"
+          text: "United States Marshals Service • Registro Procesal Automático | Mysticos RP"
         },
         timestamp: new Date().toISOString()
       }
@@ -53,16 +55,16 @@ document.getElementById('enlistForm').addEventListener('submit', async function 
 
     if (response.ok) {
       statusMsg.style.color = "#55ff55";
-      statusMsg.innerText = "TRANSMISIÓN EXITOSA: Su expediente ha llegado al Alto Mando.";
+      statusMsg.innerText = "TRANSMISIÓN EXITOSA: Su expediente ha sido remitido formalmente a la Supervisión del USMS.";
       document.getElementById('enlistForm').reset();
     } else {
       throw new Error("Fallo en la respuesta del servidor");
     }
   } catch (error) {
     statusMsg.style.color = "#ff5555";
-    statusMsg.innerText = "ERROR CRÍTICO: No se pudo enlazar con la base central.";
+    statusMsg.innerText = "ERROR CRÍTICO: No se pudo enlazar con la terminal central de datos del USMS.";
   } finally {
     submitBtn.disabled = false;
-    submitBtn.innerText = "TRANSMITIR EXPEDIENTE";
+    submitBtn.innerText = "TRANSMITIR SOLICITUD AL DESPACHO";
   }
 });
